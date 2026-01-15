@@ -44,7 +44,7 @@
 }
 
 body {
-    background: url(img/back.gif);
+    background: url(/img/back.gif);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -104,7 +104,7 @@ body {
 ========================= */
 .chat {
     background-color: var(--bg-chat);
-    background: url(img/backchat.png);
+    background: url(/img/backchat.png);
     background-size: cover;
     padding: 15px;
 
@@ -313,5 +313,6 @@ body {
     border: none;
     background: none;
 }
+
 
 
