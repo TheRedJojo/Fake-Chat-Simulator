@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Fake Chat Simulator</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="website icon" type="png" href="img/logo.png">
 </head>
 <body>
 
@@ -29,6 +30,15 @@
 
     <div class="controls">
         <select id="userSelect"></select>
+
+        <!-- NUOVO: orario opzionale -->
+        <input
+            type="text"
+            id="timeInput"
+            placeholder="Orario (es: 21:37)"
+            style="max-width:110px;"
+        >
+
         <input type="text" id="messageInput" placeholder="Scrivi un messaggio...">
         <button id="sendBtn">➤</button>
     </div>

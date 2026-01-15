@@ -8,6 +8,7 @@ const users = [
 const userSelect = document.getElementById("userSelect");
 const chat = document.getElementById("chat");
 const input = document.getElementById("messageInput");
+const timeInput = document.getElementById("timeInput");
 const sendBtn = document.getElementById("sendBtn");
 const colorPanel = document.getElementById("colorPanel");
 const colorBtn = document.getElementById("colorBtn");
@@ -65,25 +66,47 @@ function sendMessage() {
     sender.textContent = user.name;
     sender.style.color = user.color;
 
+    /* CONTENUTO MODIFICABILE */
     const content = document.createElement("div");
     content.textContent = text;
+    content.contentEditable = true;
+    content.spellcheck = false;
+
+    content.addEventListener("focus", () => {
+        content.classList.add("editing");
+    });
+
+    content.addEventListener("blur", () => {
+        content.classList.remove("editing");
+    });
+
+    content.addEventListener("keydown", e => {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            content.blur();
+        }
+    });
 
     const timestamp = document.createElement("div");
-    timestamp.classList.add("timestamp");
-    timestamp.textContent = new Date().toLocaleTimeString("it-IT", {
-        hour: "2-digit",
-        minute: "2-digit"
-    });
+timestamp.classList.add("timestamp");
+
+const customTime = timeInput.value.trim();
+
+if (customTime !== "") {
+    timestamp.textContent = customTime;
+    msg.appendChild(timestamp);
+}
 
     msg.append(sender, content, timestamp);
     chat.appendChild(msg);
 
     chat.scrollTop = chat.scrollHeight;
     input.value = "";
+    timeInput.value = "";
 }
 
 /* =========================
-   DARK MODE TOGGLE (DOUBLE CLICK HEADER)
+   DARK MODE TOGGLE
 ========================= */
 document.querySelector(".header").addEventListener("dblclick", () => {
     app.classList.toggle("dark");
